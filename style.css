@@ -1,0 +1,346 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2c5f7d;
+    --secondary: #4a8fb5;
+    --accent: #e8a87c;
+    --bg: #f5f7fa;
+    --card-bg: #ffffff;
+    --text: #2d3748;
+    --text-light: #718096;
+    --border: #e2e8f0;
+    --success: #48bb78;
+    --warning: #ed8936;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.container {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Hauptmenü */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.menu-kachel {
+    background: linear-gradient(135deg, var(--card-bg), #fafbfc);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.menu-kachel:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(44, 95, 125, 0.15);
+    border-color: var(--secondary);
+}
+
+.menu-kachel h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.menu-kachel p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.menu-extras {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+/* Buttons */
+.btn-primary, .btn-back {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background: var(--secondary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 95, 125, 0.3);
+}
+
+.btn-back {
+    background: var(--border);
+    color: var(--text);
+    margin-bottom: 1.5rem;
+}
+
+.btn-back:hover {
+    background: #cbd5e0;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    border-bottom: 2px solid var(--border);
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    font-weight: 600;
+}
+
+.tab-btn:hover {
+    color: var(--secondary);
+}
+
+/* Lernkarten */
+.karten-liste {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.karte {
+    perspective: 1000px;
+    height: 250px;
+    cursor: pointer;
+}
+
+.karte-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.karte.flipped .karte-inner {
+    transform: rotateY(180deg);
+}
+
+.karte-front, .karte-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.karte-front {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.karte-back {
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    transform: rotateY(180deg);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Test */
+.test-frage {
+    background: var(--bg);
+    border-left: 4px solid var(--accent);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+}
+
+.test-frage h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.test-frage .afb-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--accent);
+    color: white;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.test-frage textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+}
+
+.loesung {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+
+.loesung h5 {
+    color: var(--success);
+    margin-bottom: 0.5rem;
+}
+
+.btn-loesung {
+    background: var(--success);
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+.btn-loesung:hover {
+    background: #38a169;
+}
+
+/* Tabellen */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background: var(--primary);
+    color: white;
+    z-index: 10;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+    background: var(--bg);
+}
+
+tbody tr:hover {
+    background: #e6f2f8;
+}
+
+/* Wahlberechtigung Chart */
+#wahlberechtigung-chart {
+    margin: 2rem 0;
+}
+
+.chart-bar {
+    margin-bottom: 1.5rem;
+}
+
+.chart-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.chart-bar-bg {
+    background: var(--border);
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.chart-bar-fill {
+    background: linear-gradient

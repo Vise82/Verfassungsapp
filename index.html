@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verfassungen im Vergleich - Geschichts-LK</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Verfassungen im Vergleich</h1>
+        <p class="subtitle">Interaktive Lernumgebung für den Geschichts-Leistungskurs</p>
+    </header>
+
+    <main>
+        <!-- Hauptmenü -->
+        <div id="hauptmenu" class="container">
+            <h2>Wähle eine Verfassung oder ein Modul</h2>
+            <div class="menu-grid">
+                <div class="menu-kachel" onclick="zeigeLernkarten('frankreich1791')">
+                    <h3>Frankreich 1791</h3>
+                    <p>Konstitutionelle Monarchie</p>
+                </div>
+                <div class="menu-kachel" onclick="zeigeLernkarten('frankreich1793')">
+                    <h3>Frankreich 1793</h3>
+                    <p>Jakobinische Republik</p>
+                </div>
+                <div class="menu-kachel" onclick="zeigeLernkarten('paulskirche1849')">
+                    <h3>Paulskirche 1849</h3>
+                    <p>Erste deutsche Reichsverfassung</p>
+                </div>
+                <div class="menu-kachel" onclick="zeigeLernkarten('kaiserreich1871')">
+                    <h3>Kaiserreich 1871</h3>
+                    <p>Konstitutionelle Monarchie</p>
+                </div>
+                <div class="menu-kachel" onclick="zeigeLernkarten('weimar1919')">
+                    <h3>Weimar 1919</h3>
+                    <p>Erste deutsche Republik</p>
+                </div>
+                <div class="menu-kachel" onclick="zeigeLernkarten('grundgesetz1949')">
+                    <h3>Grundgesetz 1949</h3>
+                    <p>Bundesrepublik Deutschland</p>
+                </div>
+            </div>
+            <div class="menu-extras">
+                <button class="btn-primary" onclick="zeigeVergleich()">📊 Vergleichstabelle</button>
+                <button class="btn-primary" onclick="zeigeWahlsysteme()">🗳️ Wahlsysteme</button>
+                <button class="btn-primary" onclick="zeigeVergleichstest()">✍️ Vergleichstest</button>
+            </div>
+        </div>
+
+        <!-- Lernkarten & Test Container -->
+        <div id="karten-container" class="container hidden">
+            <button class="btn-back" onclick="zeigeHauptmenu()">← Zurück zum Hauptmenü</button>
+            <h2 id="karten-titel"></h2>
+            <div class="tabs">
+                <button class="tab-btn active" onclick="wechselTab('lernkarten')">Lernkarten</button>
+                <button class="tab-btn" onclick="wechselTab('test')">Test</button>
+            </div>
+            <div id="lernkarten-view" class="tab-content">
+                <div id="karten-liste"></div>
+            </div>
+            <div id="test-view" class="tab-content hidden">
+                <div id="test-liste"></div>
+            </div>
+        </div>
+
+        <!-- Vergleichstabelle -->
+        <div id="vergleich-container" class="container hidden">
+            <button class="btn-back" onclick="zeigeHauptmenu()">← Zurück zum Hauptmenü</button>
+            <h2>Vergleichstabelle aller Verfassungen</h2>
+            <div class="table-wrapper">
+                <table id="vergleich-tabelle"></table>
+            </div>
+        </div>
+
+        <!-- Wahlsysteme -->
+        <div id="wahlsysteme-container" class="container hidden">
+            <button class="btn-back" onclick="zeigeHauptmenu()">← Zurück zum Hauptmenü</button>
+            <h2>Wahlsysteme im Vergleich</h2>
+            <div class="table-wrapper">
+                <table id="wahlsysteme-tabelle"></table>
+            </div>
+            <h3>Wahlberechtigung im Vergleich</h3>
+            <div id="wahlberechtigung-chart"></div>
+        </div>
+
+        <!-- Vergleichstest -->
+        <div id="vergleichstest-container" class="container hidden">
+            <button class="btn-back" onclick="zeigeHauptmenu()">← Zurück zum Hauptmenü</button>
+            <h2>Interaktiver Vergleichstest</h2>
+            <div id="vergleichstest-auswahl">
+                <p>Wähle zwei Verfassungen zum Vergleich:</p>
+                <select id="verfassung1">
+                    <option value="">-- Erste Verfassung --</option>
+                </select>
+                <select id="verfassung2">
+                    <option value="">-- Zweite Verfassung --</option>
+                </select>
+                <button class="btn-primary" onclick="starteVergleichstest()">Test starten</button>
+            </div>
+            <div id="vergleichstest-fragen" class="hidden"></div>
+            <div id="vergleichstest-auswertung" class="hidden"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Geschichts-LK • Verfassungsvergleich • 2024</p>
+    </footer>
+
+    <script src="daten.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
